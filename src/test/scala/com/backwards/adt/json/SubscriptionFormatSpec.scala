@@ -5,26 +5,26 @@ import org.scalatest.{MustMatchers, WordSpec}
 import com.github.nscala_time.time.Imports.DateTime
 import com.backwards.adt._
 
-class PartnerSubscriptionFormatSpec extends WordSpec with MustMatchers with PartnerSubscriptionFormat {
+class SubscriptionFormatSpec extends WordSpec with MustMatchers with SubscriptionFormat {
   val now: ZuluDateTime = ZuluDateTime(DateTime.now)
 
-  val partnerSubscription = PartnerSubscription(
+  val subscription = Subscription(
     ProductId("productId"),
-    PartnerSubscriptionId("39"),
-    PartnerTransactionId("42"),
+    SubscriptionId("39"),
+    TransactionId("42"),
     OriginalPurchaseDate(now),
     PurchaseDate(now),
     Option(ExpiresDate(now))
   )
 
-  "Partner subscription format" should {
+  "Subscription format" should {
     "Encode ADT to JSON and decode" in {
-      val json = Json toJson partnerSubscription
+      val json = Json toJson subscription
 
       // TODO - Actual assertion
       println(Json prettyPrint json)
 
-      println(json.as[PartnerSubscription])
+      println(json.as[Subscription])
     }
   }
 }

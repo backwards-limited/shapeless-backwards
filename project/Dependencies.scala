@@ -10,6 +10,7 @@ object Dependencies {
       fs2,
       scalaUri, betterFiles,
       play, playJsonDerivedCodes,
+      circe,
       scalaDateTime
     ).flatten
 
@@ -127,5 +128,21 @@ object Dependencies {
 
   lazy val playJsonDerivedCodes: Seq[ModuleID] = Seq("org.julienrf" %% "play-json-derived-codecs" % "4.0.1")
 
+  lazy val circe: Seq[ModuleID] = {
+    val version = "0.11.1"
+
+    Seq(
+      "io.circe" %% "circe-testing",
+      "io.circe" %% "circe-literal"
+    ).map(_ % version % "test, it") ++ Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-generic-extras",
+      "io.circe" %% "circe-shapes",
+      "io.circe" %% "circe-parser",
+      "io.circe" %% "circe-refined"
+    ).map(_ % version)
+  }
+  
   lazy val scalaDateTime: Seq[ModuleID] = Seq("com.github.nscala-time" %% "nscala-time" % "2.22.0")
 }

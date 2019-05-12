@@ -1,9 +1,9 @@
 package com.backwards.adt
 
-final case class PartnerSubscription(
+final case class Subscription(
   productId: ProductId,
-  partnerSubscriptionId: PartnerSubscriptionId,
-  partnerTransactionId: PartnerTransactionId,
+  subscriptionId: SubscriptionId,
+  transactionId: TransactionId,
   originalPurchaseDate: OriginalPurchaseDate,
   purchaseDate: PurchaseDate,
   expiresDate: Option[ExpiresDate]
